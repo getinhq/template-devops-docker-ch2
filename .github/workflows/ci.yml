@@ -9,4 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: docker compose config
       - run: docker compose build
+      - name: Compose file must declare named volume
+        run: grep -q "app_data:" docker-compose.yml

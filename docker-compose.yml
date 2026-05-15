@@ -3,11 +3,16 @@ services:
     build: ./api
     ports:
       - "5000:5000"
+    volumes:
+      - app_data:/data
   ui:
     build: ./ui
     ports:
       - "8501:8501"
     depends_on:
       - api
+    environment:
+      - API_URL=http://api:5000
+
 volumes:
-  data: {}
+  app_data:
