@@ -1,0 +1,13 @@
+services:
+  api:
+    build: ./api
+    ports:
+      - "5000:5000"
+  ui:
+    build: ./ui
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+volumes:
+  data: {}
